@@ -27,7 +27,7 @@ public class Owner {
         credit = mycredit;
         customers = new ArrayList<>();
     }
-    public void viewCustomers(ArrayList<Customer> customers)
+    public void viewCustomers()
     {
         System.out.println("Customers: ");
         for(int c = 0; c < customers.size(); c++)
