@@ -20,16 +20,19 @@ import Model.Owner;
  *
  * @author Myo Zaw
  */
+
+///Myoooooooooooooooooo
 public class ChangePassword implements MenuItem {
     
     AllUsers allUsers;
+    
     Owner owner;
     Customer customer;
     
     public ChangePassword(Owner _owner,AllUsers _allUsers) {
         owner = _owner;
-        customer = null;
         allUsers = _allUsers;
+        customer = null;
     }
     
     public ChangePassword(Customer _customer,AllUsers _allUsers){
