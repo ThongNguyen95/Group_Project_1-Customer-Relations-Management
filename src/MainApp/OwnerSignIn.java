@@ -6,9 +6,13 @@
 package MainApp;
 
 import static Console.Console.STDIN;
+import Console.Menu;
 import Console.MenuItem;
+import Console.Quit;
+import Console.ReturnFromMenu;
 import Model.AllUsers;
 import Model.Owner;
+import Model.ViewCustomerMenu;
 
 
 //Zarni
@@ -38,7 +42,7 @@ public class OwnerSignIn implements MenuItem {
                     String str2 = STDIN.next();
                     
                     if(str2.equals(tempOwner.getPassword())){
-                        //subMenu(tempOwner);
+                        subMenu(tempOwner);
                         break;
                     }
                     else {
@@ -50,7 +54,16 @@ public class OwnerSignIn implements MenuItem {
         }while(tempOwner == null);
     }
 
-
+    private void subMenu(Owner tempOwner) {
+        System.out.println();
+        System.out.println("Login successful!");
+        System.out.println("Business Owner Menu " + tempOwner.getCompanyName());
+        System.out.println("Credits: " + tempOwner.getCredit());
+        Menu subMenu = new Menu("Owner Menu", menus);
+        subMenu.addMenu(new Quit());
+        subMenu.addMenu(new ReturnFromMenu(menus));
+        subMenu.addMenu(new ViewCustomerMenu(menus,tempOwner));
+    }
     @Override
     public String toString() {
         return "Sign In As Owner";

@@ -6,7 +6,10 @@
 package MainApp;
 
 import static Console.Console.STDIN;
+import Console.Menu;
 import Console.MenuItem;
+import Console.Quit;
+import Console.ReturnFromMenu;
 import Model.AllUsers;
 import Model.Customer;
 
@@ -38,7 +41,7 @@ public class CustomerSignIn implements MenuItem {
                     String str2 = STDIN.next();
                     
                     if(str2.equals(tempCustomer.getPassword())){
-                        //subMenu(tempCustomer);
+                        subMenu(tempCustomer);
                         break;
                     }
                     else {
@@ -49,7 +52,15 @@ public class CustomerSignIn implements MenuItem {
             
         }while(tempCustomer == null);
     }
-
+    private void subMenu(Customer cust) {
+        System.out.println();
+        System.out.println("Login successful!");
+        System.out.println("Customer " + cust.getCustomerName() + " Customer Menu ");
+        System.out.println("Credits: " + cust.getCredit());
+        Menu subMenu = new Menu("Customer Menu", menus);
+        subMenu.addMenu(new Quit());
+        subMenu.addMenu(new ReturnFromMenu(menus));
+    }
     @Override
     public String toString() {
         return "Sign In As Customer";
