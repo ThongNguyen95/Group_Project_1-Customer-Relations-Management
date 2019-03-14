@@ -84,6 +84,7 @@ public class AllUsers implements Serializable {
         return false;
     }
     
+    //Myo
     public boolean ChangeOpass(String id, String name, String password){
         for(Owner owner: owners){
             if(owner.getID().equals(id) && owner.getCompanyName().equals(name) && owner.getPassword().equals(password))
@@ -99,6 +100,7 @@ public class AllUsers implements Serializable {
         return false;
     }
     
+    //Myo
     public boolean ChangeCpass(String id, String name, String password){
         for(Customer customer: customers){
             if(customer.getID().equals(id) && customer.getCustomerName().equals(name) && customer.getPassword().equals(password))
