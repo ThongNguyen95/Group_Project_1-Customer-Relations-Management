@@ -19,6 +19,7 @@ public class Owner implements Serializable {
     private String companyName;
     private double credit;
     private final ArrayList<Customer> customers;
+    private ArrayList<Message> msgBox;
     
     
     public Owner(String myid, String mypass, String mycomp,double mycredit)
@@ -28,6 +29,7 @@ public class Owner implements Serializable {
         companyName = mycomp;
         credit = mycredit;
         customers = new ArrayList<>();
+        msgBox = new ArrayList<>();
     }
     public void viewCustomers()
     {
@@ -90,9 +92,28 @@ public class Owner implements Serializable {
         return companyName;
     }
     
-    public void sendMessage()
-    {
-        
+        public ArrayList<Customer> getCustomerList() {
+        return customers;
+    }
+    
+    public void sendMessage(Customer cust, String subject, String content) {
+        cust.receiveMessage(new Message(companyName, subject, content));
+    }
+
+    public void receiveMessage(Message msg) {
+        msgBox.add(msg);
+    }
+    
+    public ArrayList<Message> getMsgBox() {
+        return msgBox;
+    }
+    
+    public void messageAlert() {
+        int count = 0;
+        for (Message msg : msgBox) {
+            if (!msg.isViewed()) count++;
+        }
+        System.out.println("You have " + count + " unread messages!");
     }
     
 }
