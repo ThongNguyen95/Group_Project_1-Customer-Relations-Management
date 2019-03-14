@@ -25,6 +25,7 @@ public class Customer {
         businessName = _bus;
         credit = 0;
     }
+    
     public void setID(String myid)
     {
     id = myid;

@@ -13,15 +13,28 @@ package MainApp;
 import static Console.Console.STDIN;
 import Console.MenuItem;
 import Model.AllUsers;
+import Model.Customer;
+import Model.Owner;
 
 /**
  *
  * @author Myo Zaw
  */
-public class Cpassword implements MenuItem {
-        AllUsers allUsers;
-        
-    public Cpassword(AllUsers _allUsers) {
+public class ChangePassword implements MenuItem {
+    
+    AllUsers allUsers;
+    Owner owner;
+    Customer customer;
+    
+    public ChangePassword(Owner _owner,AllUsers _allUsers) {
+        owner = _owner;
+        customer = null;
+        allUsers = _allUsers;
+    }
+    
+    public ChangePassword(Customer _customer,AllUsers _allUsers){
+        customer = _customer;
+        owner = null;
         allUsers = _allUsers;
     }
     
@@ -32,20 +45,14 @@ public class Cpassword implements MenuItem {
         boolean oexist;
         boolean cexist;
         boolean passchanged;
-        int userchoice;
+        
         System.out.print("Do you want to change your account password(y/n)?: ");
         String input = STDIN.next();
         
         answer = input.equals("y");
         if(answer)
-        {   
-            System.out.println("Choose your account type");
-            System.out.println("1. Owner");
-            System.out.println("2. Customer");
-            userchoice = STDIN.nextInt();
-            if(userchoice==1)
-            {
-            if(!allUsers.isOEmpty())
+        {
+            if(customer==null)
             {
                 System.out.println("Enter your Id:");  
                 do {
@@ -81,11 +88,6 @@ public class Cpassword implements MenuItem {
             }
             else
             {
-                    System.out.println("There is no account to change password!");
-            }
-            }
-            if(userchoice==2)
-            {
                 if(!allUsers.isCEmpty())
                 {
                     System.out.println("Enter your Id:");  
@@ -119,16 +121,9 @@ public class Cpassword implements MenuItem {
                     System.out.println("Your account doesn't exist!");
                 }   
             }
-              else
-                {
-                    System.out.println("There is no account to change password!");
-                }                
+            }
         }
-        else
-        {
-            System.out.println("Thanks for making business");
-        }
-    }
+        
     }
     
     @Override
