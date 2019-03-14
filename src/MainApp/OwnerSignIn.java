@@ -13,7 +13,6 @@ import Console.Quit;
 import Console.ReturnFromMenu;
 import Model.AllUsers;
 import Model.Owner;
-import Model.ViewCustomerMenu;
 
 
 //Zarni
@@ -68,6 +67,7 @@ public class OwnerSignIn implements MenuItem {
         Menu subMenu = new Menu(name, menus);
         subMenu.addMenu(new Quit(allUsers));
         subMenu.addMenu(new ReturnFromMenu(menus));
+        subMenu.addMenu(new ViewCustomerMenu(menus, tempOwner));
     }
     @Override
     public String toString() {
