@@ -31,8 +31,8 @@ public class ChangePassword implements MenuItem {
     
     public ChangePassword(Owner _owner,AllUsers _allUsers) {
         owner = _owner;
-        customer = null;
         allUsers = _allUsers;
+        customer = null;
     }
     
     public ChangePassword(Customer _customer,AllUsers _allUsers){
