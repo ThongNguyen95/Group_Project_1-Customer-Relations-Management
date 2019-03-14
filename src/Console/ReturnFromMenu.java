@@ -5,6 +5,7 @@
  */
 package Console;
 
+//Zarni
 
 public class ReturnFromMenu implements MenuItem {
     MenuStack menus;
@@ -15,6 +16,7 @@ public class ReturnFromMenu implements MenuItem {
     //Return to previous menu
     @Override
     public void execute() {
+         menus.toPreviousMenu();
     }
     
     @Override
