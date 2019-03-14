@@ -3,13 +3,14 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Model;
+package MainApp;
 
 import Console.Menu;
 import Console.MenuItem;
 import Console.MenuStack;
 import Console.Quit;
 import Console.ReturnFromMenu;
+import Model.Owner;
 
 /**
  *
