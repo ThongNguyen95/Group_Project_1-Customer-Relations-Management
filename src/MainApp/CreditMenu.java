@@ -52,11 +52,13 @@ public class CreditMenu implements MenuItem {
 
             subMenu.addMenu(new AddCreditSubMenu(owner));
             subMenu.addMenu(new SubCreditSubMenu(owner));
+            subMenu.addMenu(new SendCreditSubMenu(owner,allusers));
         } else //interact with customer
         {
             System.out.println(customer.getCustomerName() + " credits: " + customer.getCredit());
             subMenu.addMenu(new AddCreditSubMenu(customer));
             subMenu.addMenu(new SubCreditSubMenu(customer));
+            subMenu.addMenu(new SendCreditSubMenu(customer,allusers));
         }
 
     }

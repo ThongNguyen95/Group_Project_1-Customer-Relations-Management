@@ -5,6 +5,7 @@
  */
 package Model;
 
+import static Console.Console.STDIN;
 import java.io.Serializable;
 import java.util.ArrayList;
 
@@ -35,6 +36,14 @@ public class Owner implements Serializable {
         {
             System.out.println(c + ": " + customers.get(c).getCustomerName());
         }
+    }
+    
+    public Customer selectCustomer()
+    {
+        viewCustomers();
+        System.out.println("Select a customer: ");
+        int input = STDIN.nextInt();
+        return customers.get(input);
     }
     public void addCustomer(Customer cust)
     {
