@@ -51,6 +51,17 @@ public class AllUsers implements Serializable {
         return null;
     }
     
+    // new add
+    public Customer getCustomerBasedOnID(String id) {
+        // Loop through the customers list and compare id
+        for (Customer customer : customers) {
+            if (customer.getID().equals(id)) {
+                return customer;
+            }
+        }
+        return null;
+    }
+    
     public Owner getOwnerBasedOnID(String id) {
         // Loop through the customers list and compare id
         for (Owner owner : owners) {
