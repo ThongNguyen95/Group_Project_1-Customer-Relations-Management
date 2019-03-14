@@ -53,7 +53,8 @@ public class ChangePassword implements MenuItem {
         if(answer)
         {
             if(customer==null)
-            {
+            {   
+                //System.out.println("Owner Accounts");
                 System.out.println("Enter your Id:");  
                 do {
                 uid = STDIN.next();
@@ -87,8 +88,8 @@ public class ChangePassword implements MenuItem {
                 }
             }
             else
-            {
-                if(!allUsers.isCEmpty())
+            {     
+                //System.out.println("Customer Accounts");
                 {
                     System.out.println("Enter your Id:");  
                 do {
