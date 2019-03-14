@@ -67,6 +67,7 @@ public class CustomerSignIn implements MenuItem {
         subMenu.addMenu(new Quit(allUsers));
         subMenu.addMenu(new ReturnFromMenu(menus));
         subMenu.addMenu(new CreditMenu(cust, menus, allUsers));
+        subMenu.addMenu(new ChangePassword(cust,allUsers));
     }
     @Override
     public String toString() {
