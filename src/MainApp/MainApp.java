@@ -40,6 +40,7 @@ public class MainApp {
         mainMenu.addMenu(new SignUp(allUsers));
         mainMenu.addMenu(new OwnerSignIn(allUsers, menus));
         mainMenu.addMenu(new CustomerSignIn(allUsers, menus));
+        mainMenu.addMenu(new Cpassword(allUsers));
         while (true) {
             menus.run();
         }
