@@ -18,7 +18,7 @@ public class Menu implements MenuItem {
 	public Menu (String _name, MenuStack _menuStack){
 		name = _name;
 		menus = _menuStack;
-		menus.add(this);
+		//menus.add(this);
 		options = new ArrayList<>();
 	}
 	
