@@ -68,6 +68,9 @@ public class OwnerSignIn implements MenuItem {
         subMenu.addMenu(new ViewCustomerMenu(menus, tempOwner));
         subMenu.addMenu(new CreditMenu(tempOwner, menus, allUsers));
         subMenu.addMenu(new ChangePassword(tempOwner,allUsers));
+        System.out.println("Msg box size: " + tempOwner.getMsgBox());
+        subMenu.addMenu(new ViewMessageBox(tempOwner.getMsgBox()));
+        subMenu.addMenu(new OwnerSendMessage(tempOwner));
     }
 
     @Override

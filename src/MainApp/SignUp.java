@@ -108,7 +108,7 @@ public class SignUp implements MenuItem {
                     System.out.println("This business is not exist. Try again!");
                 } else {
                     tempOwner.addCustomer(customer);
-                    customer.setBusinessName(tempOwner.getCompanyName());
+                    customer.setBusiness(tempOwner);
                 }
 
             } while (tempOwner == null);
