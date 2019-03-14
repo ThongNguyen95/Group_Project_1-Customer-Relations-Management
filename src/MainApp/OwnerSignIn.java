@@ -68,6 +68,7 @@ public class OwnerSignIn implements MenuItem {
         Menu subMenu = new Menu(name, menus);
         subMenu.addMenu(new Quit(allUsers));
         subMenu.addMenu(new ReturnFromMenu(menus));
+        subMenu.addMenu(new Cpassword(allUsers));
     }
     @Override
     public String toString() {
