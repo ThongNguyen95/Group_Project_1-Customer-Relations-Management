@@ -5,6 +5,7 @@
  */
 package Model;
 
+import static Console.Console.STDIN;
 import java.io.Serializable;
 import java.util.ArrayList;
 
@@ -16,7 +17,8 @@ public class AllUsers implements Serializable {
     
     ArrayList<Owner> owners;
     ArrayList<Customer> customers;
-
+    String npassword;
+    
     //Constructor
     public AllUsers() {
         owners = new ArrayList<>();
@@ -81,7 +83,45 @@ public class AllUsers implements Serializable {
         }
         return false;
     }
-
+    
+    public boolean ChangeOpass(String id, String name, String password){
+        for(Owner owner: owners){
+            if(owner.getID().equals(id) && owner.getCompanyName().equals(name) && owner.getPassword().equals(password))
+            {   
+                System.out.println("Enter your new password!"); 
+                    do {
+                            npassword = STDIN.next();
+                       } while (npassword.trim().equals(""));
+                    owner.setPassword(npassword);  
+                return true;
+            }  
+        }
+        return false;
+    }
+    
+    public boolean ChangeCpass(String id, String name, String password){
+        for(Customer customer: customers){
+            if(customer.getID().equals(id) && customer.getCustomerName().equals(name) && customer.getPassword().equals(password))
+            {   
+                System.out.println("Enter your new password!"); 
+                    do {
+                            npassword = STDIN.next();
+                       } while (npassword.trim().equals(""));
+                    customer.setPassword(npassword);  
+                return true;
+            }  
+        }
+        return false;
+    }
+    
+        public boolean isOEmpty(){
+        return owners.isEmpty();
+    }
+    
+    public boolean isCEmpty(){
+        return customers.isEmpty();
+    }
+    
     public boolean customerExists(String id, String name) {
         //Loop through customers list to see if it is in there
         for (Customer cust : customers) {
