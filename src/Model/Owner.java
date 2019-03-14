@@ -5,13 +5,14 @@
  */
 package Model;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
 /**
  *
  * @author Eric Gatpandan
  */
-public class Owner {
+public class Owner implements Serializable {
     private String id;
     private String password;
     private String companyName;
