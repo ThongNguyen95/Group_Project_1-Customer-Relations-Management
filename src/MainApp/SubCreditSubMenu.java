@@ -41,22 +41,10 @@ public class SubCreditSubMenu implements MenuItem{
         double input = STDIN.nextDouble();
         
         if(owner == null)
-            subCust(input);
+            customer.subCredit(input); //subtract from customer
         else
-            subOwn(input);
-                if(owner == null);
-                    
- 
-    }
-
-    private void subCust(double num)
-    {
-        customer.subCredit(num);
-    }
-
-    private void subOwn(double num)
-    {
-        owner.subCredit(num);
+            owner.subCredit(input); //subtract from owner
+                 
     }
     @Override
     public String toString()
