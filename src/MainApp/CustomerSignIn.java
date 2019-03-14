@@ -13,9 +13,10 @@ import Console.Quit;
 import Console.ReturnFromMenu;
 import Model.AllUsers;
 import Model.Customer;
-
-// Zarni
-
+/**
+ *
+ * @author Zarni
+ */
 public class CustomerSignIn implements MenuItem {
         AllUsers allUsers;
         MenuStack menus;

@@ -21,7 +21,6 @@ public class ViewCustomerMenu implements MenuItem{
     private Owner owner;
     
     
-    
     public ViewCustomerMenu(MenuStack _menus,  Owner _own)
     {
         menus = _menus;

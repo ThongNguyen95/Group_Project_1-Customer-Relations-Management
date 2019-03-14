@@ -66,6 +66,8 @@ public class OwnerSignIn implements MenuItem {
         
         Menu subMenu = new Menu(name, menus);
         subMenu.addMenu(new Quit(allUsers));
+        subMenu.addMenu(new AddAppointment(tempOwner,menus,allUsers));
+        subMenu.addMenu(new DisplayAppointmentList(tempOwner,menus));
         subMenu.addMenu(new ReturnFromMenu(menus));
         subMenu.addMenu(new ViewCustomerMenu(menus, tempOwner));
     }
