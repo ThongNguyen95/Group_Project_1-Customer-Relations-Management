@@ -25,7 +25,7 @@ public class MainApp {
     //Thong
     public static void main(String[] args) {
         //Create list of customers and business owner
-        AllUsers allUsers;
+        AllUsers allUsers ;
         //Load data from file
         try {
             allUsers = IO.readFromFile();
@@ -42,7 +42,6 @@ public class MainApp {
         mainMenu.addMenu(new CustomerSignIn(allUsers, menus));
         while (true) {
             menus.run();
-            
         }
     }   
 }
