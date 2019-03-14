@@ -14,49 +14,43 @@ import Model.Owner;
  *
  * @author Eric
  */
-public class AddCreditSubMenu implements MenuItem{
+public class AddCreditSubMenu implements MenuItem {
+
     Owner owner;
     Customer customer;
-    public AddCreditSubMenu(Owner _owner)
-    {
+
+    public AddCreditSubMenu(Owner _owner) {
         owner = _owner;
         customer = null;
     }
-    public AddCreditSubMenu(Customer _cust)
-    {
+
+    public AddCreditSubMenu(Customer _cust) {
         customer = _cust;
         owner = null;
     }
-    @Override 
-    public void execute()
-    {
+
+    @Override
+    public void execute() {
         System.out.println();
-        if(owner == null)
+        if (owner == null) {
             System.out.println("Current credits: " + customer.getCredit());
-        else
+        } else {
             System.out.println("Current credits: " + owner.getCredit());
-        
+        }
+
         System.out.println("How much to add?: ");
         double input = STDIN.nextDouble();
-        
-        if(owner == null)
-            addtoCust(input);
-        else
-            addtoOwn(input);
-                if(owner == null);
-    }
-    private void addtoCust(double num)
-    {
-        customer.addCredit(num);
-    }
-    private void addtoOwn(double num)
-    {
-        owner.addCredit(num);
+
+        if (owner == null) {
+            customer.addCredit(input);//add to customer
+        } else {
+            owner.addCredit(input);//add to owner
+        }
+
     }
 
     @Override
-    public String toString()
-    {
+    public String toString() {
         return "Add Credits";
     }
 }
