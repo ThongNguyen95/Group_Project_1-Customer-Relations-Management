@@ -8,6 +8,7 @@ package MainApp;
 import static Console.Console.STDIN;
 import Console.Menu;
 import Console.MenuItem;
+import Console.MenuStack;
 import Console.Quit;
 import Console.ReturnFromMenu;
 import Model.AllUsers;
@@ -17,9 +18,11 @@ import Model.Customer;
 
 public class CustomerSignIn implements MenuItem {
         AllUsers allUsers;
+        MenuStack menus;
         
-    public CustomerSignIn(AllUsers _allUsers){
+    public CustomerSignIn(AllUsers _allUsers, MenuStack _menus){
         allUsers = _allUsers;
+        menus = _menus;
     }
 
     @Override
@@ -53,12 +56,15 @@ public class CustomerSignIn implements MenuItem {
         }while(tempCustomer == null);
     }
     private void subMenu(Customer cust) {
-        System.out.println();
-        System.out.println("Login successful!");
-        System.out.println("Customer " + cust.getCustomerName() + " Customer Menu ");
-        System.out.println("Credits: " + cust.getCredit());
-        Menu subMenu = new Menu("Customer Menu", menus);
-        subMenu.addMenu(new Quit());
+        //System.out.println("Login successful!");
+        //System.out.println("Business Owner Menu " + tempOwner.getCompanyName());
+        //System.out.println("Credits: " + tempOwner.getCredit());
+        String name = "Owner Menu: "    //Menu name
+                + cust.getCustomerName()//Company name
+                + "\nCredits: " + Double.toString(cust.getCredit()); //Credit
+        
+        Menu subMenu = new Menu(name, menus);
+        subMenu.addMenu(new Quit(allUsers));
         subMenu.addMenu(new ReturnFromMenu(menus));
     }
     @Override

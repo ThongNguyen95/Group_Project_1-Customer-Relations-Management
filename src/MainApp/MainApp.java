@@ -39,7 +39,7 @@ public class MainApp {
         mainMenu.addMenu(new Quit(allUsers));
         mainMenu.addMenu(new SignUp(allUsers));
         mainMenu.addMenu(new OwnerSignIn(allUsers, menus));
-        mainMenu.addMenu(new CustomerSignIn(allUsers));
+        mainMenu.addMenu(new CustomerSignIn(allUsers, menus));
         while (true) {
             menus.run();
             

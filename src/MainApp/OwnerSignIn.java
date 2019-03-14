@@ -8,6 +8,7 @@ package MainApp;
 import static Console.Console.STDIN;
 import Console.Menu;
 import Console.MenuItem;
+import Console.MenuStack;
 import Console.Quit;
 import Console.ReturnFromMenu;
 import Model.AllUsers;
@@ -19,9 +20,11 @@ import Model.ViewCustomerMenu;
 
 public class OwnerSignIn implements MenuItem {
     AllUsers allUsers;
+    MenuStack menus;
     
-    public OwnerSignIn(AllUsers _allUsers){
+    public OwnerSignIn(AllUsers _allUsers, MenuStack _menus){
         allUsers = _allUsers;
+        menus = _menus;
     }
     
     @Override
@@ -55,14 +58,16 @@ public class OwnerSignIn implements MenuItem {
     }
 
     private void subMenu(Owner tempOwner) {
-        System.out.println();
-        System.out.println("Login successful!");
-        System.out.println("Business Owner Menu " + tempOwner.getCompanyName());
-        System.out.println("Credits: " + tempOwner.getCredit());
-        Menu subMenu = new Menu("Owner Menu", menus);
-        subMenu.addMenu(new Quit());
+        //System.out.println("Login successful!");
+        //System.out.println("Business Owner Menu " + tempOwner.getCompanyName());
+        //System.out.println("Credits: " + tempOwner.getCredit());
+        String name = "Owner Menu: "    //Menu name
+                + tempOwner.getCompanyName() //Company name
+                + "\nCredits: " + Double.toString(tempOwner.getCredit()); //Credit
+        
+        Menu subMenu = new Menu(name, menus);
+        subMenu.addMenu(new Quit(allUsers));
         subMenu.addMenu(new ReturnFromMenu(menus));
-        subMenu.addMenu(new ViewCustomerMenu(menus,tempOwner));
     }
     @Override
     public String toString() {
