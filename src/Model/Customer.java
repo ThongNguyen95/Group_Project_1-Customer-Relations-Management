@@ -27,6 +27,7 @@ public class Customer implements Serializable {
         businessName = _bus;
         credit = 0;
     }
+    
     public void setID(String myid)
     {
     id = myid;

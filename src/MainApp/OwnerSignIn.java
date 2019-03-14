@@ -67,7 +67,6 @@ public class OwnerSignIn implements MenuItem {
         subMenu.addMenu(new ReturnFromMenu(menus));
         subMenu.addMenu(new ViewCustomerMenu(menus, tempOwner));
         subMenu.addMenu(new CreditMenu(tempOwner, menus, allUsers));
-
     }
 
     @Override
