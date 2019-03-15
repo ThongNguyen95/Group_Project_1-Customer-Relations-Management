@@ -24,7 +24,7 @@ public class AllUsers implements Serializable {
         owners = new ArrayList<>();
         customers = new ArrayList<>();
     }
-
+    
     public void addOwner(Owner _owner) {
         owners.add(_owner);
     }

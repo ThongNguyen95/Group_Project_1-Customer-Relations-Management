@@ -15,7 +15,7 @@ import Model.AllUsers;
 import Model.Customer;
 /**
  *
- * @author Zarni
+ * @author zarni
  */
 public class CustomerSignIn implements MenuItem {
         AllUsers allUsers;
@@ -67,6 +67,10 @@ public class CustomerSignIn implements MenuItem {
         Menu subMenu = new Menu(name, menus);
         subMenu.addMenu(new Quit(allUsers));
         subMenu.addMenu(new ReturnFromMenu(menus));
+        subMenu.addMenu(new CreditMenu(cust, menus, allUsers));
+        subMenu.addMenu(new ChangePassword(cust,allUsers));
+        subMenu.addMenu(new ViewMessageBox(cust.getMsgBox()));
+        subMenu.addMenu(new CustomerSendMessage(cust));
     }
     @Override
     public String toString() {

@@ -6,6 +6,7 @@
 package Model;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 
 /**
  *
@@ -15,18 +16,20 @@ public class Customer implements Serializable {
     private String id;
     private String password;
     private String customerName;
-    private String businessName;
+    private Owner business;
     private double credit;
+    private ArrayList<Message> msgBox;
     
-    
-    public Customer(String myid, String mypassword, String mycustomerName, String _bus)
+    public Customer(String myid, String mypassword, String mycustomerName, Owner _bus)
     {
         id = myid;
         password = mypassword;
         customerName = mycustomerName;
-        businessName = _bus;
+        business = _bus;
         credit = 0;
+        msgBox = new ArrayList<>();
     }
+    
     public void setID(String myid)
     {
     id = myid;
@@ -47,13 +50,13 @@ public class Customer implements Serializable {
     {
         return customerName;
     }
-    public void setBusinessName(String name)
+    public void setBusiness(Owner _bus)
     {
-        businessName = name;
+        business = _bus;
     }
-    public String getBusName()
+    public Owner getBus()
     {
-        return businessName;
+        return business;
     }
         public void setCredit(double num)
     {
@@ -71,9 +74,24 @@ public class Customer implements Serializable {
     {
         return credit;
     }
-    public void sendMessage()
-    {
-        
+        public void sendMessage(String subject, String content) {
+        business.receiveMessage(new Message(customerName, subject, content));
+    }
+    
+    public void receiveMessage(Message msg) {
+        msgBox.add(msg);
+    }
+    
+    public ArrayList<Message> getMsgBox() {
+        return msgBox;
+    }
+    
+    public void messageAlert() {
+        int count = 0;
+        for (Message msg : msgBox) {
+            if (!msg.isViewed()) count++;
+        }
+        System.out.println("You have " + count + "unread messages!");
     }
 
 }

@@ -5,6 +5,7 @@
  */
 package Model;
 
+import static Console.Console.STDIN;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -19,6 +20,7 @@ public class Owner implements Serializable {
     private String companyName;
     private double credit;
     private final ArrayList<Customer> customers;
+    private ArrayList<Message> msgBox;
     
     private  ArrayList<Calendar> cal;
     private  ArrayList<Customer> appCust;
@@ -30,6 +32,7 @@ public class Owner implements Serializable {
         companyName = mycomp;
         credit = mycredit;
         customers = new ArrayList<>();
+        msgBox = new ArrayList<>();
         
         cal = new ArrayList<>();
         appCust = new ArrayList<>();
@@ -43,22 +46,24 @@ public class Owner implements Serializable {
             System.out.println(c + ": " + customers.get(c).getCustomerName());
         }
     }
+    public Customer selectCustomer()
+    {
+        viewCustomers();
+        System.out.println("Select a customer: ");
+        int input = STDIN.nextInt();
+        return customers.get(input);
+    }
     public void addAppointment(Calendar _cal,Customer _cust){
-        
         cal.add(_cal);
         appCust.add(_cust);
     }
-    public void getAppointmentList(){
-        for(int i=0; i<cal.size(); i++){
-            int mm,dd,yy;
-            mm = cal.get(i).get(Calendar.MONTH);
-            dd = cal.get(i).get(Calendar.DAY_OF_MONTH);
-            yy = cal.get(i).get(Calendar.YEAR);
-            System.out.println("You have an appointment on " + mm + "/" + dd + "/" + yy +
-                                " with " + appCust.get(i).getCustomerName() + ".");
-           
-        }
-        
+    public ArrayList<Calendar> getAppointmentDateList()
+    {
+        return cal;
+    }
+    public ArrayList<Customer> getAppointmentCustList()
+    {
+        return appCust;
     }
     public void addCustomer(Customer cust)
     {
@@ -105,9 +110,28 @@ public class Owner implements Serializable {
         return companyName;
     }
     
-    public void sendMessage()
-    {
-        
+        public ArrayList<Customer> getCustomerList() {
+        return customers;
+    }
+    
+    public void sendMessage(Customer cust, String subject, String content) {
+        cust.receiveMessage(new Message(companyName, subject, content));
+    }
+
+    public void receiveMessage(Message msg) {
+        msgBox.add(msg);
+    }
+    
+    public ArrayList<Message> getMsgBox() {
+        return msgBox;
+    }
+    
+    public void messageAlert() {
+        int count = 0;
+        for (Message msg : msgBox) {
+            if (!msg.isViewed()) count++;
+        }
+        System.out.println("You have " + count + " unread messages!");
     }
     
 }
