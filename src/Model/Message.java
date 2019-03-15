@@ -12,10 +12,10 @@ import java.io.Serializable;
  * @author Thong Nguyen
  */
 public class Message implements Serializable {
-    String sender;
-    String subject;
-    String content;
-    boolean isViewed;
+    private String sender;
+    private String subject;
+    private String content;
+    private boolean isViewed;
     public Message(String _sender, String _subject, String _content) {
         sender = _sender;
         subject = _subject;
@@ -23,6 +23,18 @@ public class Message implements Serializable {
         isViewed = false;
         
     }
+    //Getters for testing
+    public String getSender() {
+        return sender;
+    }
+    public String getSubject() {
+        return subject;
+    }
+    public String getContent() {
+        return content;
+    }
+    
+    
     public void view() {
         isViewed = true;
         System.out.println(subject + ":");
