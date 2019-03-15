@@ -13,8 +13,10 @@ import Console.Quit;
 import Console.ReturnFromMenu;
 import Model.AllUsers;
 import Model.Owner;
-
-//Zarni
+/**
+ *
+ * @author zarni
+ */
 public class OwnerSignIn implements MenuItem {
 
     AllUsers allUsers;
@@ -68,10 +70,12 @@ public class OwnerSignIn implements MenuItem {
         subMenu.addMenu(new ViewCustomerMenu(menus, tempOwner));
         subMenu.addMenu(new CreditMenu(tempOwner, menus, allUsers));
         subMenu.addMenu(new ChangePassword(tempOwner,allUsers));
-        subMenu.addMenu(new DeleteAccount(tempOwner,allUsers));
         System.out.println("Msg box size: " + tempOwner.getMsgBox());
         subMenu.addMenu(new ViewMessageBox(tempOwner.getMsgBox()));
+        subMenu.addMenu(new DeleteAccount(tempOwner,allUsers));
         subMenu.addMenu(new OwnerSendMessage(tempOwner));
+        subMenu.addMenu(new AddAppointment(tempOwner,menus,allUsers));
+        subMenu.addMenu(new DisplayAppointmentList(tempOwner,menus));
     }
 
     @Override

@@ -6,9 +6,10 @@
 package Console;
 
 import java.util.ArrayDeque;
-
-//Zarni
-
+/**
+ *
+ * @author Zarni
+ */
 public class MenuStack {
     
         // stack of menus

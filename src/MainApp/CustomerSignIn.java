@@ -1,3 +1,4 @@
+
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -13,9 +14,10 @@ import Console.Quit;
 import Console.ReturnFromMenu;
 import Model.AllUsers;
 import Model.Customer;
-
-// Zarni
-
+/**
+ *
+ * @author zarni
+ */
 public class CustomerSignIn implements MenuItem {
         AllUsers allUsers;
         MenuStack menus;

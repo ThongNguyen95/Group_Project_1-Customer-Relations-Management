@@ -41,15 +41,15 @@ public class SendCreditSubMenu implements MenuItem {
             Customer tempcust = owner.selectCustomer();
             System.out.println("How much to send? ");
             double input = STDIN.nextDouble();
-            tempcust.addCredit(input);
+            owner.sendCreditTo(tempcust,input);
         } else //interacting with customer
         {
             String ownername = cust.getBus().getCompanyName();
             System.out.println("Your business is: " + ownername);
-            Owner tempOwn = allusers.getOwnerBasedOnName(ownername);
+            Owner tempOwn = cust.getBus();
             System.out.println("How much to send? ");
             double input = STDIN.nextDouble();
-            tempOwn.addCredit(input);
+            cust.sendCreditTo(tempOwn,input);
 
         }
     }
