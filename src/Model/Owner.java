@@ -100,6 +100,7 @@ public class Owner implements Serializable {
     public void sendCreditTo(Customer cust, double num)
     {
         cust.addCredit(num);
+        this.subCredit(num);
     }
     public String getID()
     {

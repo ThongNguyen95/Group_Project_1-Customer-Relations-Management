@@ -80,6 +80,7 @@ public class Customer implements Serializable {
     public void sendCreditTo(Owner own,double num)
     {
         own.addCredit(num);
+        this.subCredit(num);
     }
     public void receiveMessage(Message msg) {
         msgBox.add(msg);

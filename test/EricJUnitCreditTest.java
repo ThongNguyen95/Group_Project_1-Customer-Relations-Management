@@ -44,14 +44,10 @@ public class EricJUnitCreditTest {
         customer.addCredit(1000);
         customer.sendCreditTo(owner, 150);
         assertEquals(150, owner.getCredit(), 0);
+        assertEquals(850,customer.getCredit(),0);
     }
     
-    @Test
-    public void testPassword()
-    {
-         boolean pass = allusers.ChangeOpass("yes", "Google", "yes");
-         assertEquals(owner,owner2);
-    }
+
 }
 
 
