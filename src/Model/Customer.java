@@ -77,7 +77,10 @@ public class Customer implements Serializable {
         public void sendMessage(String subject, String content) {
         business.receiveMessage(new Message(customerName, subject, content));
     }
-    
+    public void sendCreditTo(Owner own,double num)
+    {
+        own.addCredit(num);
+    }
     public void receiveMessage(Message msg) {
         msgBox.add(msg);
     }
@@ -93,5 +96,6 @@ public class Customer implements Serializable {
         }
         System.out.println("You have " + count + "unread messages!");
     }
-
 }
+
+ 

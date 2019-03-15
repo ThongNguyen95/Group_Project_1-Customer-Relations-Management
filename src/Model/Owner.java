@@ -97,6 +97,10 @@ public class Owner implements Serializable {
     {
         return credit;
     }
+    public void sendCreditTo(Customer cust, double num)
+    {
+        cust.addCredit(num);
+    }
     public String getID()
     {
         return id;
