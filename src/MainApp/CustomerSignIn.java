@@ -68,6 +68,7 @@ public class CustomerSignIn implements MenuItem {
         subMenu.addMenu(new ReturnFromMenu(menus));
         subMenu.addMenu(new CreditMenu(cust, menus, allUsers));
         subMenu.addMenu(new ChangePassword(cust,allUsers));
+        subMenu.addMenu(new DeleteAccount(cust,allUsers));
         subMenu.addMenu(new ViewMessageBox(cust.getMsgBox()));
         subMenu.addMenu(new CustomerSendMessage(cust));
     }

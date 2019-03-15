@@ -84,42 +84,60 @@ public class AllUsers implements Serializable {
         return false;
     }
     
-    //Myo
-    public boolean ChangeOpass(String id, String name, String password){
+    //Change Owner account password
+    public boolean ChangeOpass(String id, String name, String password, String npassword){
         for(Owner owner: owners){
             if(owner.getID().equals(id) && owner.getCompanyName().equals(name) && owner.getPassword().equals(password))
             {   
-                System.out.println("Enter your new password!"); 
-                    do {
-                            npassword = STDIN.next();
-                       } while (npassword.trim().equals(""));
-                    owner.setPassword(npassword);  
+                owner.setPassword(npassword);
                 return true;
             }  
         }
         return false;
     }
     
-    //Myo
-    public boolean ChangeCpass(String id, String name, String password){
+    //Change Customer Account password function.
+    public boolean ChangeCpass(String id, String name, String password, String npassword){
         for(Customer customer: customers){
             if(customer.getID().equals(id) && customer.getCustomerName().equals(name) && customer.getPassword().equals(password))
             {   
-                System.out.println("Enter your new password!"); 
-                    do {
-                            npassword = STDIN.next();
-                       } while (npassword.trim().equals(""));
+
                     customer.setPassword(npassword);  
-                return true;
+                    return true;
+            }
+        }
+        return false;
+    }
+    
+    //Delete Owner account function
+    public boolean DeleteOaccount(String id, String name, String password){
+        for(Owner owner: owners){
+            if(owner.getID().equals(id) && owner.getCompanyName().equals(name) && owner.getPassword().equals(password))
+            {
+                        owners.remove(owner);
             }  
         }
         return false;
     }
     
-        public boolean isOEmpty(){
+    //Delete Customer account function
+     public boolean DeleteCaccount(String id, String name, String password){
+        for(Customer customer: customers){
+            if(customer.getID().equals(id) && customer.getCustomerName().equals(name) && customer.getPassword().equals(password))
+            {         
+                        customers.remove(customer);
+                        return true;                  
+            }  
+            }    
+        return false;
+    }
+    
+    //Check Owner arraylist is empty or not
+    public boolean isOEmpty(){
         return owners.isEmpty();
     }
     
+    //Check Customer arraylist is empty or not
     public boolean isCEmpty(){
         return customers.isEmpty();
     }
