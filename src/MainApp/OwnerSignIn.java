@@ -13,8 +13,10 @@ import Console.Quit;
 import Console.ReturnFromMenu;
 import Model.AllUsers;
 import Model.Owner;
-
-//Zarni
+/**
+ *
+ * @author zarni
+ */
 public class OwnerSignIn implements MenuItem {
 
     AllUsers allUsers;
@@ -71,6 +73,8 @@ public class OwnerSignIn implements MenuItem {
         System.out.println("Msg box size: " + tempOwner.getMsgBox());
         subMenu.addMenu(new ViewMessageBox(tempOwner.getMsgBox()));
         subMenu.addMenu(new OwnerSendMessage(tempOwner));
+        subMenu.addMenu(new AddAppointment(tempOwner,menus,allUsers));
+        subMenu.addMenu(new DisplayAppointmentList(tempOwner,menus));
     }
 
     @Override

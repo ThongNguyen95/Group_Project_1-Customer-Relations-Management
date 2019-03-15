@@ -8,6 +8,7 @@ package Model;
 import static Console.Console.STDIN;
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.Calendar;
 
 /**
  *
@@ -21,6 +22,8 @@ public class Owner implements Serializable {
     private final ArrayList<Customer> customers;
     private ArrayList<Message> msgBox;
     
+    private  ArrayList<Calendar> cal;
+    private  ArrayList<Customer> appCust;
     
     public Owner(String myid, String mypass, String mycomp,double mycredit)
     {
@@ -30,6 +33,10 @@ public class Owner implements Serializable {
         credit = mycredit;
         customers = new ArrayList<>();
         msgBox = new ArrayList<>();
+        
+        cal = new ArrayList<>();
+        appCust = new ArrayList<>();
+        
     }
     public void viewCustomers()
     {
@@ -39,13 +46,24 @@ public class Owner implements Serializable {
             System.out.println(c + ": " + customers.get(c).getCustomerName());
         }
     }
-    
     public Customer selectCustomer()
     {
         viewCustomers();
         System.out.println("Select a customer: ");
         int input = STDIN.nextInt();
         return customers.get(input);
+    }
+    public void addAppointment(Calendar _cal,Customer _cust){
+        cal.add(_cal);
+        appCust.add(_cust);
+    }
+    public ArrayList<Calendar> getAppointmentDateList()
+    {
+        return cal;
+    }
+    public ArrayList<Customer> getAppointmentCustList()
+    {
+        return appCust;
     }
     public void addCustomer(Customer cust)
     {

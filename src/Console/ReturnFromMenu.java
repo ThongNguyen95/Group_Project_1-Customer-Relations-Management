@@ -4,9 +4,10 @@
  * and open the template in the editor.
  */
 package Console;
-
-//Zarni
-
+/**
+ *
+ * @author Zarni
+ */
 public class ReturnFromMenu implements MenuItem {
     MenuStack menus;
     public ReturnFromMenu(MenuStack _menus) {
