@@ -29,22 +29,21 @@ public class CustomerSignIn implements MenuItem {
     @Override
     public void execute() {
         Customer tempCustomer;
+        // ask customer id, until correct
         System.out.println("Enter your ID");
-        
-        
         do{
-            
             String str = STDIN.next();
+            // check the ID that alread sing up
             tempCustomer = allUsers.getCustomerBasedOnID(str);
             if(tempCustomer == null){
                 System.out.println("Invalid ID");
-                
             }else {
                 while(str.equals(tempCustomer.getID())){
+                     // if the id correct, ask password
                     System.out.println("Enter your Password");
                     String str2 = STDIN.next();
-                    
                     if(str2.equals(tempCustomer.getPassword())){
+                        //call customer sub menu function
                         subMenu(tempCustomer);
                         break;
                     }
@@ -56,6 +55,8 @@ public class CustomerSignIn implements MenuItem {
             
         }while(tempCustomer == null);
     }
+    
+    // sub menu for customer after singed in
     private void subMenu(Customer cust) {
         //System.out.println("Login successful!");
         //System.out.println("Business Owner Menu " + tempOwner.getCompanyName());
