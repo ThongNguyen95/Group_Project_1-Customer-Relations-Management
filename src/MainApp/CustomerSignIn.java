@@ -72,6 +72,9 @@ public class CustomerSignIn implements MenuItem {
         subMenu.addMenu(new ChangePassword(cust,allUsers));
         subMenu.addMenu(new ViewMessageBox(cust.getMsgBox()));
         subMenu.addMenu(new CustomerSendMessage(cust));
+        subMenu.addMenu(new DeleteAccount(cust,allUsers));
+        
+        
     }
     @Override
     public String toString() {
