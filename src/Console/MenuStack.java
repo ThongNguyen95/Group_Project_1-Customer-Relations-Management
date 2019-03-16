@@ -17,31 +17,30 @@ public class MenuStack {
 	
 	//Constructor
 	public MenuStack() {
-		// initialize the stack
-		menus = new ArrayDeque<>();
+            // initialize the stack
+            menus = new ArrayDeque<>();
 	}
 
 	//Get the item from the top of the stack
 	public Menu getCurrent() {
-		return menus.getFirst();
+            return menus.getFirst();
 	}
 	
 	//add a new menu to the stack	
 	public void add(Menu menu) {
-		menus.addFirst(menu);
+            menus.addFirst(menu);
 	}
         
         //Remove the first object on top of the stack
 	public void toPreviousMenu() {
 		menus.removeFirst();
 	}
+        
         //Execute the current menu object
 	public void run() {
-		if (!menus.isEmpty()) {
-                    this.getCurrent().execute();
-                    
-                }
-	
+            if (!menus.isEmpty()) {
+                this.getCurrent().execute();
+            }
 	}
 }
 

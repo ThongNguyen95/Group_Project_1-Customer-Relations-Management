@@ -18,10 +18,9 @@ import Model.Owner;
  * @author zarni
  */
 public class OwnerSignIn implements MenuItem {
-
     AllUsers allUsers;
     MenuStack menus;
-
+    
     public OwnerSignIn(AllUsers _allUsers, MenuStack _menus) {
         allUsers = _allUsers;
         menus = _menus;
@@ -30,21 +29,22 @@ public class OwnerSignIn implements MenuItem {
     @Override
     public void execute() {
         Owner tempOwner;
+        // ask owner id, until correct
         System.out.println("Enter your ID");
-
         do {
-
             String str = STDIN.next();
+            // check the ID that alread sing up
             tempOwner = allUsers.getOwnerBasedOnID(str);
             if (tempOwner == null) {
                 System.out.println("Invalid ID");
 
             } else {
                 while (str.equals(tempOwner.getID())) {
+                    // if the id correct, ask password
                     System.out.println("Enter your Password");
                     String str2 = STDIN.next();
-
                     if (str2.equals(tempOwner.getPassword())) {
+                        //call owner sub menu function
                         subMenu(tempOwner);
                         break;
                     } else {
@@ -55,7 +55,8 @@ public class OwnerSignIn implements MenuItem {
 
         } while (tempOwner == null);
     }
-
+    
+    // sub menu for owner, after singed in
     private void subMenu(Owner tempOwner) {
         //System.out.println("Login successful!");
         //System.out.println("Business Owner Menu " + tempOwner.getCompanyName());
@@ -75,6 +76,8 @@ public class OwnerSignIn implements MenuItem {
         subMenu.addMenu(new OwnerSendMessage(tempOwner));
         subMenu.addMenu(new AddAppointment(tempOwner,menus,allUsers));
         subMenu.addMenu(new DisplayAppointmentList(tempOwner,menus));
+        
+        
     }
 
     @Override
