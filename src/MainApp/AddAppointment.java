@@ -10,9 +10,7 @@ import static Console.Console.STDIN;
 import Console.MenuItem;
 import Console.MenuStack;
 import Model.AllUsers;
-import Model.Customer;
 import Model.Owner;
-import java.util.Calendar;
 import java.util.GregorianCalendar;
 
 /**
@@ -20,10 +18,13 @@ import java.util.GregorianCalendar;
  * @author zarni
  */
 public class AddAppointment implements MenuItem {
+    
     private GregorianCalendar cal;
-    private MenuStack menus;
+    private final MenuStack menus;
     Owner owner;
     AllUsers allUser;
+    
+   
     public AddAppointment(Owner _owner,MenuStack _menus,AllUsers _allUser){
         owner = _owner;
         menus = _menus;
@@ -32,18 +33,18 @@ public class AddAppointment implements MenuItem {
     
     @Override
     public void execute(){
-        int mm,dd,yy;
-        System.out.println("Enter an appointment.");
+        int mm,dd,yy;   // temp holder for month, day and year
+        // ask month,day and year from owner that have an appointment
+        System.out.println("Enter an appointment.");    
         mm = Console.intInRange("Enter a month: ", 1, 12) -1;
         dd = Console.intInRange("Enter a day: ", 1, 31);
         yy = Console.intInRange("Enter a year: ", 2019, 2119);
         cal = new GregorianCalendar(yy,mm,dd);
+        // get customer that have an appointment
         System.out.println("Enter your customer ID that you have an appointment with.");
         String str = STDIN.next();
-        //Customer tempCust = ;
         owner.addAppointment(cal,allUser.getCustomerBasedOnID(str));
-        
-        System.out.println("You added an appointment.");
+        System.out.println("You added an appointment."); 
         
     }
     @Override
