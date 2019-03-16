@@ -3,15 +3,11 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package MainApp;
 
 import static Console.Console.STDIN;
 import Console.MenuItem;
+import Console.ReturnFromMenu;
 import Model.AllUsers;
 import Model.Customer;
 import Model.Owner;
@@ -20,36 +16,33 @@ import Model.Owner;
  *
  * @author Myo Zaw
  */
-
-///Myoooooooooooooooooo
-public class ChangePassword implements MenuItem {
+public class DeleteAccount implements MenuItem {
     
     AllUsers allUsers;
-    
     Owner owner;
     Customer customer;
     
-    public ChangePassword(Owner _owner,AllUsers _allUsers) {
+    public DeleteAccount(Owner _owner,AllUsers _allUsers) {
         owner = _owner;
         allUsers = _allUsers;
         customer = null;
     }
     
-    public ChangePassword(Customer _customer,AllUsers _allUsers){
+    public DeleteAccount(Customer _customer,AllUsers _allUsers){
         customer = _customer;
         owner = null;
         allUsers = _allUsers;
     }
     
     @Override
-    public void execute(){
-        String uname, uid, upassword, npassword;
+    public void execute() {
+       String uname, uid, upassword;
         boolean answer;
         boolean oexist;
         boolean cexist;
-        boolean passchanged;
+        boolean AccountDeleted;
         
-        System.out.print("Do you want to change your account password(y/n)?: ");
+        System.out.print("Do you to deactivate your account(y/n)?: ");
         String input = STDIN.next();
         
         answer = input.equals("y");
@@ -74,15 +67,14 @@ public class ChangePassword implements MenuItem {
                     do {
                             upassword = STDIN.next();
                        } while (upassword.trim().equals(""));
-                    System.out.println("Enter your old password!");
-                    do {
-                            npassword = STDIN.next();
-                       } while (npassword.trim().equals(""));
-                    passchanged = allUsers.ChangeOpass(uid, uname,upassword,npassword);
-                    if(passchanged)
-                    {
-                        System.out.println("Your password is successfully changed.");
-                        //allUsers.displayInfo();
+                    AccountDeleted = allUsers.DeleteOaccount(uid, uname,upassword);
+                    if(AccountDeleted)
+                    {   
+                        System.out.println("Your owner account is successfully deatviated.");
+                        System.out.println("Sorry to see you go!");
+                        allUsers.displayInfo();
+
+                        
                     }
                     else 
                     {
@@ -113,15 +105,12 @@ public class ChangePassword implements MenuItem {
                     do {
                             upassword = STDIN.next();
                        } while (upassword.trim().equals(""));
-                    System.out.println("Enter your new password!");
-                    do {
-                            npassword = STDIN.next();
-                       } while (npassword.trim().equals(""));
-                    passchanged = allUsers.ChangeCpass(uid, uname,upassword,npassword);
-                    if(passchanged)
+                    AccountDeleted = allUsers.DeleteCaccount(uid, uname,upassword);
+                    if(AccountDeleted)
                     {
-                        System.out.println("Your Customer account password successfully changed.");
-                        //allUsers.displayInfo();
+                        System.out.println("Your customer account is successfully deatviated.");
+                        System.out.println("Sorry to see you go!");
+                        allUsers.displayInfo();
                     }
                     else
                     {
@@ -133,13 +122,18 @@ public class ChangePassword implements MenuItem {
                     System.out.println("Your account doesn't exist!");
                 }   
             }
+               
             }
+            
         }
-        
+        else 
+        {
+            System.out.println("Thanks for keeping account with us.");
+        }
     }
     
     @Override
     public String toString(){
-        return "Change Password.";
+        return "Deactivate your account.";
     }
 }
